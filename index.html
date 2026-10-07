@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Internet fibra óptica rápida e estável para sua casa. Confira os planos e escolha o ideal para você.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>PULSINET | Internet que acompanha você</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #10213a;
+      --muted: #64748b;
+      --blue: #1672ce;
+      --blue-dark: #1059a8;
+      --blue-light: #d8edff;
+      --surface: #f4f8fc;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--navy);
+      background: var(--white);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      padding: 10px 20px;
+      color: #e3f2ff;
+      background: var(--navy);
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    .topbar strong {
+      color: var(--blue-light);
+    }
+
+    header {
+      position: sticky;
+      z-index: 5;
+      top: 0;
+      background: rgb(255 255 255 / 94%);
+      border-bottom: 1px solid #edf0f5;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 850;
+      letter-spacing: -0.06em;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      color: #43516a;
+      font-size: 0.94rem;
+      font-weight: 650;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--blue);
+      color: var(--white);
+      font: inherit;
+      font-weight: 750;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--blue-dark);
+    }
+
+    .button-small {
+      min-height: 42px;
+      padding-inline: 18px;
+      font-size: 0.9rem;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 82px 0 78px;
+      background:
+        radial-gradient(ellipse at 83% 16%, rgb(216 237 255 / 90%), transparent 30%),
+        radial-gradient(ellipse at 100% 90%, rgb(22 114 206 / 10%), transparent 38%),
+        #f3f8ff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 18px;
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -100px;
+      bottom: -300px;
+      width: 580px;
+      height: 580px;
+      border: 1px solid rgb(22 114 206 / 12%);
+      border-radius: 50%;
+      content: "";
+      box-shadow: 0 0 0 55px rgb(22 114 206 / 3%), 0 0 0 110px rgb(22 114 206 / 3%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+
+    .hero-character {
+      display: block;
+      width: 112%;
+      max-width: none;
+      align-self: end;
+      margin: 0 0 -78px -8%;
+      filter: drop-shadow(0 18px 28px rgb(22 114 206 / 12%));
+      transform: translateY(-28px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      color: var(--blue-dark);
+      font-size: 0.81rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+      content: "";
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 650px;
+      margin-bottom: 20px;
+      font-size: clamp(2.8rem, 6vw, 4.7rem);
+      letter-spacing: -0.075em;
+      line-height: 1.02;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .hero-copy {
+      max-width: 520px;
+      margin-bottom: 28px;
+      color: #58657a;
+      font-size: 1.13rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .text-link {
+      padding: 12px 4px;
+      color: var(--navy);
+      font-weight: 750;
+    }
+
+    .text-link span {
+      margin-left: 5px;
+      color: var(--blue);
+    }
+
+    .hero-note {
+      margin: 25px 0 0;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+
+    .plans-section {
+      padding: 86px 0 90px;
+      background: var(--surface);
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading .eyebrow {
+      justify-content: center;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.06em;
+      line-height: 1.1;
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-items: stretch;
+      gap: 20px;
+    }
+
+    .plan-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      border: 1px solid #e7eaf1;
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: 0 12px 35px rgb(16 33 58 / 4%);
+    }
+
+    .plan-card.featured {
+      border: 2px solid var(--blue);
+      box-shadow: 0 18px 48px rgb(22 114 206 / 13%);
+    }
+
+    .popular {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      margin-bottom: 5px;
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .plan-description {
+      min-height: 44px;
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .speed {
+      margin-bottom: 5px;
+      color: var(--blue);
+      font-size: 2.7rem;
+      font-weight: 850;
+      letter-spacing: -0.07em;
+      line-height: 1;
+    }
+
+    .speed small {
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .price {
+      margin: 18px 0 5px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .price strong {
+      color: var(--navy);
+      font-size: 2.15rem;
+      letter-spacing: -0.06em;
+    }
+
+    .price small {
+      color: var(--navy);
+      font-weight: 650;
+    }
+
+    .price-note {
+      margin-bottom: 22px;
+      color: #8490a2;
+      font-size: 0.78rem;
+    }
+
+    .plan-divider {
+      width: 100%;
+      height: 1px;
+      margin: 0 0 20px;
+      border: 0;
+      background: #edf0f5;
+    }
+
+    .benefits {
+      display: grid;
+      gap: 12px;
+      margin: 0 0 26px;
+      padding: 0;
+      list-style: none;
+      color: #405067;
+      font-size: 0.9rem;
+    }
+
+    .benefits li::before {
+      margin-right: 9px;
+      color: var(--blue);
+      content: "✓";
+      font-weight: 900;
+    }
+
+    .plan-card .button {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .included {
+      padding: 68px 0;
+      background: var(--white);
+    }
+
+    .included-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 1.1fr);
+      align-items: center;
+      gap: 24px;
+    }
+
+    .included-character {
+      display: block;
+      width: 100%;
+      align-self: center;
+    }
+
+    .included-copy h2 {
+      max-width: 480px;
+    }
+
+    .included-copy > p {
+      max-width: 480px;
+      color: var(--muted);
+    }
+
+    .included-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .included-item {
+      min-height: 116px;
+      padding: 20px;
+      border: 1px solid #edf0f5;
+      border-radius: 16px;
+      background: #fcfcfe;
+    }
+
+    .included-icon {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--blue);
+      font-size: 1.25rem;
+    }
+
+    .included-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .included-item span:last-child {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .contact {
+      padding: 64px 0;
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(190px, 0.8fr) auto;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .contact-character {
+      display: block;
+      width: 100%;
+      max-width: 310px;
+      align-self: end;
+      margin: -36px auto -64px;
+    }
+
+    .contact h2 {
+      margin-bottom: 8px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+    }
+
+    .contact p {
+      margin-bottom: 0;
+      color: #c2cad7;
+    }
+
+    .contact .button {
+      flex: 0 0 auto;
+      color: var(--navy);
+      background: var(--blue-light);
+    }
+
+    .contact .button:hover {
+      background: #c2e2ff;
+    }
+
+    footer {
+      padding: 25px 0;
+      color: #aeb8c7;
+      background: #0b192d;
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-inner p {
+      margin: 0;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        gap: 16px;
+        font-size: 0.86rem;
+      }
+
+      .plan-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-character {
+        transform: translateY(-18px);
+      }
+
+      .included-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 30px;
+      }
+
+      .included-character {
+        width: min(100%, 340px);
+        justify-self: center;
+      }
+
+      .included-list {
+        grid-column: 1 / -1;
+      }
+
+      .contact-inner {
+        grid-template-columns: minmax(0, 1fr) minmax(180px, 0.8fr);
+      }
+
+      .contact-character {
+        grid-column: 2;
+        grid-row: 1 / 3;
+      }
+
+      .contact .button {
+        justify-self: start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 32px, 440px);
+      }
+
+      .topbar {
+        font-size: 0.74rem;
+      }
+
+      .nav {
+        min-height: 66px;
+      }
+
+      .brand-logo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .nav-links a:not(.button) {
+        display: none;
+      }
+
+      .nav-links {
+        margin-left: auto;
+      }
+
+      .button-small {
+        min-height: 39px;
+        padding-inline: 14px;
+      }
+
+      .hero {
+        padding: 68px 0 64px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .hero-copy {
+        font-size: 1rem;
+      }
+
+      .hero-character {
+        width: min(100%, 390px);
+        justify-self: center;
+        margin: 0 auto -64px;
+        transform: none;
+      }
+
+      .plans-section {
+        padding: 68px 0;
+      }
+
+      .plan-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .plan-card {
+        padding: 27px;
+      }
+
+      .included {
+        padding: 58px 0;
+      }
+
+      .included-grid {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .included-character {
+        width: min(100%, 320px);
+        margin: 0 auto;
+      }
+
+      .included-list {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        grid-column: auto;
+      }
+
+      .included-item {
+        padding: 15px;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .contact-character {
+        width: min(100%, 300px);
+        grid-column: auto;
+        grid-row: auto;
+        margin: 0 auto -64px;
+      }
+
+      .contact .button {
+        justify-self: stretch;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    Conexão rápida, suporte de verdade. <strong>Consulte a cobertura na sua região.</strong>
+  </div>
+
+  <header>
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="PULSINET, início">
+        <img class="brand-logo" src="logo-pulsinet.png" alt="PULSINET Telecom">
+      </a>
+      <div class="nav-links">
+        <a href="#planos">Planos</a>
+        <a href="#vantagens">Vantagens</a>
+        <a class="button button-small" href="#contato">Assine agora</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">Internet 100% fibra óptica</p>
+          <h1>Uma conexão que vai <span>mais longe.</span></h1>
+          <p class="hero-copy">Mais velocidade para assistir, jogar, trabalhar e ficar perto de quem importa. Escolha seu plano e navegue sem complicação.</p>
+          <div class="hero-actions">
+            <a class="button" href="#planos">Conheça os planos</a>
+            <a class="text-link" href="#contato">Verificar cobertura <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="hero-note">Instalação rápida · Wi-Fi incluso · Atendimento próximo</p>
+        </div>
+        <img class="hero-character" src="personagem-banner.png" alt="Personagem da PULSINET usando o celular com símbolos de Wi-Fi">
+      </div>
+    </section>
+
+    <section class="plans-section" id="planos">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Planos para sua casa</p>
+          <h2>Seu próximo nível de internet começa aqui.</h2>
+          <p>Escolha a velocidade ideal para sua rotina. Sem surpresas, com conexão estável para todos os seus dispositivos.</p>
+        </div>
+
+        <div class="plan-grid">
+          <article class="plan-card">
+            <h3 class="plan-name">Essencial</h3>
+            <p class="plan-description">Uma opção prática para sua rotina conectada.</p>
+            <div class="speed">500 <small>MB</small></div>
+            <p class="price">por apenas<br><strong>R$ 89</strong><small>,90/mês</small></p>
+            <p class="price-note">Mensalidade do plano.</p>
+            <hr class="plan-divider">
+            <ul class="benefits">
+              <li>Para navegar e estudar</li>
+              <li>Redes sociais e chamadas</li>
+              <li>Uso diário da família</li>
+            </ul>
+            <a class="button" href="#contato">Quero esse plano</a>
+          </article>
+
+          <article class="plan-card featured">
+            <span class="popular">Mais escolhido</span>
+            <h3 class="plan-name">Conectado</h3>
+            <p class="plan-description">Mais velocidade para vários dispositivos.</p>
+            <div class="speed">600 <small>MB</small></div>
+            <p class="price">por apenas<br><strong>R$ 99</strong><small>,90/mês</small></p>
+            <p class="price-note">Mensalidade do plano.</p>
+            <hr class="plan-divider">
+            <ul class="benefits">
+              <li>Filmes, séries e chamadas</li>
+              <li>Vários dispositivos conectados</li>
+              <li>Mais velocidade para sua rotina</li>
+            </ul>
+            <a class="button" href="#contato">Quero esse plano</a>
+          </article>
+
+          <article class="plan-card">
+            <h3 class="plan-name">Avançado</h3>
+            <p class="plan-description">Mais desempenho e uma câmera Wi-Fi para sua casa.</p>
+            <div class="speed">700 <small>MB</small></div>
+            <p class="price">por apenas<br><strong>R$ 129</strong><small>,90/mês</small></p>
+            <p class="price-note">Disponível para clientes com mais de 3 meses de assinatura.</p>
+            <hr class="plan-divider">
+            <ul class="benefits">
+              <li>Streaming e jogos online</li>
+              <li>Vários dispositivos conectados</li>
+              <li>Câmera Wi-Fi inclusa</li>
+            </ul>
+            <a class="button" href="#contato">Quero esse plano</a>
+          </article>
+
+          <article class="plan-card">
+            <h3 class="plan-name">Ultra</h3>
+            <p class="plan-description">Alta velocidade para uma casa sempre conectada.</p>
+            <div class="speed">1 <small>Giga</small></div>
+            <p class="price">por apenas<br><strong>R$ 129</strong><small>,90/mês</small></p>
+            <p class="price-note">Mensalidade do plano.</p>
+            <hr class="plan-divider">
+            <ul class="benefits">
+              <li>Jogos, streaming e home office</li>
+              <li>Múltiplos dispositivos conectados</li>
+              <li>Mais velocidade para toda a casa</li>
+            </ul>
+            <a class="button" href="#contato">Quero esse plano</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="included" id="vantagens">
+      <div class="container included-grid">
+        <div class="included-copy">
+          <p class="eyebrow">Muito além da velocidade</p>
+          <h2>Internet boa é aquela que funciona para você.</h2>
+          <p>Com a PULSINET, você tem uma conexão confiável e gente de verdade pronta para ajudar quando precisar.</p>
+        </div>
+        <img class="included-character" src="personagem-vantagens.png" alt="Personagem da PULSINET apresentando as vantagens da internet">
+        <div class="included-list">
+          <div class="included-item">
+            <span class="included-icon" aria-hidden="true">⌁</span>
+            <strong>100% fibra óptica</strong>
+            <span>Mais estabilidade no dia a dia.</span>
+          </div>
+          <div class="included-item">
+            <span class="included-icon" aria-hidden="true">⌂</span>
+            <strong>Wi-Fi para sua casa</strong>
+            <span>Conecte seus dispositivos com facilidade.</span>
+          </div>
+          <div class="included-item">
+            <span class="included-icon" aria-hidden="true">♡</span>
+            <strong>Suporte próximo</strong>
+            <span>Atendimento feito por pessoas.</span>
+          </div>
+          <div class="included-item">
+            <span class="included-icon" aria-hidden="true">⚡</span>
+            <strong>Instalação rápida</strong>
+            <span>Para você começar a navegar logo.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="container contact-inner">
+        <div>
+          <h2>Vamos levar essa conexão até você?</h2>
+          <p>Fale com nossa equipe e consulte a disponibilidade no seu endereço.</p>
+        </div>
+        <img class="contact-character" src="personagem-whatsapp.png" alt="Personagem da PULSINET convidando você a falar pelo WhatsApp">
+        <a class="button" href="https://wa.me/5551999234184?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20planos%20da%20PULSINET." target="_blank" rel="noopener noreferrer">Fale com um especialista no WhatsApp <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© 2026 PULSINET. Todos os direitos reservados.</p>
+      <p>*Consulte condições, disponibilidade e taxa de instalação na sua região.</p>
+    </div>
+  </footer>
+</body>
+</html>
